@@ -34,6 +34,6 @@ function showItemsList() {
             <img src="./assets/trash-icon.svg" alt="trash icon">
           </button>
         </div>
-        `;
-    });
+        `
+    })
 }
