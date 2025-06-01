@@ -1,4 +1,4 @@
-const items = [];
+let items = [];
 
 function addItem() {
     const itemName = document.querySelector("#item").value;
@@ -28,7 +28,7 @@ function showItemsList() {
         sectionList.innerHTML += `
          <div class="item">
           <div>
-            <input type="checkbox" name="List" id="item-${index}" ${item.checked & "checked"}>
+            <input type="checkbox" name="List" id="item-${index}" ${item.checked && "checked"}>
             <div class="custom-checkbox" onclick="checkItem('${item.name}')">
               <img src="./assets/checked.svg" alt="checked">
             </div>
@@ -41,6 +41,8 @@ function showItemsList() {
         </div>
         `
     })
+
+    localStorage.setItem("items", JSON.stringify(items))
 }
 
 function checkItem(itemName) {
@@ -69,3 +71,14 @@ function removeItem(itemName) {
 function addHideWarningClass() {
   document.querySelector(".warning").classList.add("hide-warning")
 }
+
+function verifyLocalStorageItems() {
+  const LocalStorageItems = localStorage.getItem("items")
+
+  if (LocalStorageItems) {
+    items = JSON.parse(LocalStorageItems)
+    showItemsList()
+  }
+}
+
+verifyLocalStorageItems()
