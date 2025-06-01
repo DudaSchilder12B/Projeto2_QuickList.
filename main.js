@@ -59,7 +59,7 @@ function removeItem(itemName) {
 
   divWarning.classList.remove("hide-warning")
 
-  setInterval(() => {
+  setTimeout(() => {
     divWarning.classList.add("hide-warning")
   }, 4000)
  
